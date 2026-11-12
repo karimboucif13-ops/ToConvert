@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <Version>1.2.0</Version>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TqkLibrary.FFmpeg.Lgpl2.Tools.Win.x64" Version="9.0.2" />
+    <EmbeddedResource Include="music.mp3" LogicalName="ToConvert.Assets.music.mp3" />
+    <EmbeddedResource Include="$(NuGetPackageRoot)tqklibrary.ffmpeg.lgpl2.native.win.x64\9.0.2\runtimes\win-x64\native\*.dll"
+                      LogicalName="ToConvert.Ffmpeg.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="$(NuGetPackageRoot)tqklibrary.ffmpeg.lgpl2.tools.win.x64\9.0.2\runtimes\win-x64\native\*.exe"
+                      LogicalName="ToConvert.Ffmpeg.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="$(NuGetPackageRoot)tqklibrary.ffmpeg.lgpl2.tools.win.x64\9.0.2\docs\LICENSE.txt"
+                      Condition="Exists('$(NuGetPackageRoot)tqklibrary.ffmpeg.lgpl2.tools.win.x64\9.0.2\docs\LICENSE.txt')"
+                      LogicalName="ToConvert.FFmpeg-LICENSE.txt" />
+    <Resource Include="image.png" />
+  </ItemGroup>
+
+</Project>
